@@ -3,6 +3,7 @@ import './BookmarkApp.css';
 
 import BookmarkList from '../BookmarkList/BookmarkList';
 import Fab from '../Fab/Fab';
+import { throws } from 'assert';
 
 
 class BookmarkApp extends Component {
@@ -11,7 +12,7 @@ class BookmarkApp extends Component {
             <div className="bookmarkApp">
                 <h2>Bookmarks</h2>
                 <BookmarkList bookmarks={this.props.bookmarks} />
-                <Fab />
+                <Fab showForm={this.props.showForm}/>
             </div>
         );
     }
