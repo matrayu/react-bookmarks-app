@@ -39,13 +39,14 @@ class AddBookmark extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const bookmark = (({title, url, description, rating}) => ({title, url, description, rating}))(this.state);
+    console.log(bookmark)
     const url = 'https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks';
     const options = {
       method: 'POST',
       body: JSON.stringify(bookmark),
       headers: {
-        'Content-Type': 'application/json',
-        'Autorization': 'Bearer $2a$10$Zz0zX1.AOFW5VgAcPZW2Megj3xdarWoMGYOZUfmZcyeimbLRC54ca'
+        "Content-Type": "application/json",
+        "Authorization": "Bearer $2a$10$Zz0zX1.AOFW5VgAcPZW2Megj3xdarWoMGYOZUfmZcyeimbLRC54ca"
       }
     };
 
@@ -69,6 +70,7 @@ class AddBookmark extends Component {
         this.setState({
           error: err.message
         });
+        console.log(err)
       });
   }
 
@@ -81,7 +83,7 @@ class AddBookmark extends Component {
         <div className="addbookmark">
           <h2>Add Bookmark</h2>
           { error }
-          <form className="addbookmark__form">
+          <form className="addbookmark__form" onSubmit={e => this.handleSubmit(e)}>
             <label htmlFor="title">Title:</label>
             <input type="text" name="title" id="title" placeholder="Title" value={this.state.title} onChange={e => this.titleChanged(e.target.value)}/>
             <label htmlFor="url">Url:</label>
