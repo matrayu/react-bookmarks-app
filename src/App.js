@@ -5,7 +5,7 @@ import BookmarkApp from './BookmarkApp/BookmarkApp';
 import AddBookmark from './AddBookmark/AddBookmark';
 
 
-const bookmarks = [
+/* const bookmarks = [
   {
   title:"Google",
   url:"http://www.google.com", 
@@ -18,7 +18,7 @@ const bookmarks = [
     rating:"3", 
     description:"No evil"
   }
-];
+]; */
 
 
 
