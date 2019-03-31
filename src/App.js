@@ -31,7 +31,7 @@ class App extends Component {
     };
   }
 
-  componenyDidMount() {
+  componentDidMount() {
     const url = 'https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks';
     const options = {
       method: 'GET',
@@ -77,6 +77,10 @@ class App extends Component {
   }
   
   render() {
+    const error = this.state.error
+      ? <div className="error">{this.state.error}</div>
+      : "";
+
     const page = this.state.showAddForm 
       ? <AddBookmark 
           showForm={show => this.setShowAddForm(show)}
@@ -87,6 +91,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        { error }
         { page }
       </div>
     );
