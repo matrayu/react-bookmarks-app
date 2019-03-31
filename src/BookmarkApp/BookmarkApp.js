@@ -3,7 +3,6 @@ import './BookmarkApp.css';
 
 import BookmarkList from '../BookmarkList/BookmarkList';
 import Fab from '../Fab/Fab';
-import { throws } from 'assert';
 
 
 class BookmarkApp extends Component {
