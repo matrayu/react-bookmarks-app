@@ -39,7 +39,8 @@ class AddBookmark extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const bookmark = (({title, url, description, rating}) => ({title, url, description, rating}))(this.state);
-    console.log(bookmark)
+    
+    
     const url = 'https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks';
     const options = {
       method: 'POST',
@@ -50,10 +51,12 @@ class AddBookmark extends Component {
       }
     };
 
+    
+
     fetch(url, options)
       .then(res => {
         if(!res.ok) {
-          throw new Error('Something went wrong, please try again later.');
+          throw new Error('Something went wrong. Please try again.');
         }
         return res.json();
       })
@@ -95,10 +98,10 @@ class AddBookmark extends Component {
               type="number" 
               name="rating" 
               id="rating" 
-              min="1"
-              max="5"
+              min={1}
+              max={5}
               value={this.state.rating}
-              onChange={e => this.ratingChanged(e.target.value)}/>
+              onChange={e => this.ratingChanged(parseInt(e.target.value))}/>
   
             <div className="addbookmark__buttons">
               <button onClick={e => this.props.showForm(false)}>Cancel</button>
