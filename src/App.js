@@ -3,24 +3,22 @@ import './App.css';
 
 import BookmarkApp from './BookmarkApp/BookmarkApp';
 import AddBookmark from './AddBookmark/AddBookmark';
-
+import AddBookmarkError from './AddBookmark/AddBookmarkError';
 
 /* const bookmarks = [
   {
   title:"Google",
-  url:"http://www.google.com", 
-  rating:"1", 
+  url:"com", 
+  rating:1, 
   description:"No evil"
   },
   {
     title:"Google",
     url:"http://www.google.com", 
-    rating:"3", 
+    rating:3, 
     description:"No evil"
   }
 ]; */
-
-
 
 class App extends Component {
   constructor(props) {
@@ -60,7 +58,6 @@ class App extends Component {
           error: err.message
         });
       });
-  
   };
 
   setShowAddForm(show) {
@@ -82,12 +79,10 @@ class App extends Component {
       : "";
 
     const page = this.state.showAddForm 
-      ? <AddBookmark 
-          showForm={show => this.setShowAddForm(show)}
-          handleAdd={bookmark => this.addBookmark(bookmark)} /> 
-      : <BookmarkApp 
-          bookmarks={this.state.bookmarks}
-          showForm={show => this.setShowAddForm(show)} />;
+      ? <AddBookmarkError>
+          <AddBookmark showForm={show => this.setShowAddForm(show)} handleAdd={bookmark => this.addBookmark(bookmark)} />
+        </AddBookmarkError>
+      : <BookmarkApp bookmarks={this.state.bookmarks} showForm={show => this.setShowAddForm(show)} />;
 
     return (
       <div className="App">
